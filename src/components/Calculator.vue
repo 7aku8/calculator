@@ -31,8 +31,9 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import Display from '@/components/Display.vue'
 import { mapActions } from 'vuex'
+
+import Display from '@/components/Display.vue'
 import Button from '@/components/Button.vue'
 
 @Options({
