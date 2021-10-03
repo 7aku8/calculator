@@ -69,5 +69,11 @@ div.button {
       font-weight: 550;
     }
   }
+
+  @media screen and (max-width: 380px) {
+    > span {
+      font-size: 16px;
+    }
+  }
 }
 </style>
