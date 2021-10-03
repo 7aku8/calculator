@@ -1,6 +1,6 @@
 <template>
   <div class="calculator">
-    <Display />
+    <Display/>
 
     <div class="keys">
       <Button @click="setCharacter({ key: '%' })">%</Button>
@@ -36,12 +36,16 @@ import { mapActions } from 'vuex'
 import Button from '@/components/Button.vue'
 
 @Options({
-  components: { Button, Display },
+  components: {
+    Button,
+    Display
+  },
   methods: {
     ...mapActions(['setCharacter'])
   }
 })
-export default class Calculator extends Vue {}
+export default class Calculator extends Vue {
+}
 </script>
 
 <style scoped lang="scss">

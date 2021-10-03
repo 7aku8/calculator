@@ -1,8 +1,8 @@
 <template>
   <div class="button">
-    <button class="red-button" />
+    <button/>
     <span>
-      <slot />
+      <slot/>
     </span>
   </div>
 </template>
@@ -11,7 +11,8 @@
 import { Options, Vue } from 'vue-class-component'
 
 @Options({})
-export default class Button extends Vue {}
+export default class Button extends Vue {
+}
 </script>
 
 <style scoped lang="scss">
@@ -24,29 +25,10 @@ div.button {
 
   background-image: linear-gradient(135deg, #ffffff 0%, #f4f4f4 100%);
 
-  > button.red-button {
-    width: 100%;
-    height: 100%;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 0 40px;
-    transition: all .25s ease-in-out;
-    clip-path: circle(0 at 0 75%);
-    background-color: #e37d91;
-  }
-  &:hover {
-    > button {
-      clip-path: circle(150% at 0 85%);
-    }
-    > span {
-      color: #fff;
-      font-weight: 550;
-    }
-  }
-
   > button {
     width: 100%;
     height: 100%;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -54,6 +36,12 @@ div.button {
 
     border: 0;
     outline: 0;
+
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    clip-path: circle(0 at 0 75%);
+    background-color: #e37d91;
   }
 
   > span {
@@ -69,6 +57,17 @@ div.button {
     font-size: 18px;
     font-weight: 350;
     color: #2b2b2b;
+  }
+
+  &:hover {
+    > button {
+      clip-path: circle(150% at 0 85%);
+    }
+
+    > span {
+      color: #fff;
+      font-weight: 550;
+    }
   }
 }
 </style>
