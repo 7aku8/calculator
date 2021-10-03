@@ -3,25 +3,28 @@
     <Display />
 
     <div class="keys">
-      <button>%</button>
-      <button class="sup"><span>+</span><span>/</span><span>-</span></button>
-      <button>C</button>
-      <button>/</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>x</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>-</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>+</button>
-      <button>0</button>
-      <button>,</button>
-      <button>=</button>
+      <Button @click="setCharacter({ key: '%' })">%</Button>
+      <Button
+        @click="setCharacter({ key: 'CH' })"
+        class="sup"
+      ><span>+</span><span>/</span><span>-</span></Button>
+      <Button @click="setCharacter({ key: 'C' })">C</Button>
+      <Button @click="setCharacter({ key: '/' })">/</Button>
+      <Button @click="setCharacter({ key: '7' })">7</Button>
+      <Button @click="setCharacter({ key: '8' })">8</Button>
+      <Button @click="setCharacter({ key: '9' })">9</Button>
+      <Button @click="setCharacter({ key: '*' })">x</Button>
+      <Button @click="setCharacter({ key: '4' })">4</Button>
+      <Button @click="setCharacter({ key: '5' })">5</Button>
+      <Button @click="setCharacter({ key: '6' })">6</Button>
+      <Button @click="setCharacter({ key: '-' })">-</Button>
+      <Button @click="setCharacter({ key: '1' })">1</Button>
+      <Button @click="setCharacter({ key: '2' })">2</Button>
+      <Button @click="setCharacter({ key: '3' })">3</Button>
+      <Button @click="setCharacter({ key: '+' })">+</Button>
+      <Button @click="setCharacter({ key: '0' })">0</Button>
+      <Button @click="setCharacter({ key: ',' })">,</Button>
+      <Button @click="setCharacter({ key: '=' })">=</Button>
     </div>
   </div>
 </template>
@@ -29,9 +32,14 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
 import Display from '@/components/Display.vue'
+import { mapActions } from 'vuex'
+import Button from '@/components/Button.vue'
 
 @Options({
-  components: { Display }
+  components: { Button, Display },
+  methods: {
+    ...mapActions(['setCharacter'])
+  }
 })
 export default class Calculator extends Vue {}
 </script>
@@ -40,9 +48,6 @@ export default class Calculator extends Vue {}
 div.calculator {
   width: min-content;
   height: min-content;
-
-  max-width: 90vw;
-  max-height: 90vh;
 
   overflow: auto;
 
@@ -60,7 +65,7 @@ div.calculator {
     grid-template-columns: repeat(4, 85px);
     grid-template-rows: repeat(5, 85px);
 
-    > button {
+    > div.button {
       width: 100%;
       height: 100%;
 
@@ -110,6 +115,13 @@ div.calculator {
           }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    > div.keys {
+      grid-template-columns: repeat(4, 65px);
+      grid-template-rows: repeat(5, 65px);
     }
   }
 }
