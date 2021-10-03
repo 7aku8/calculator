@@ -1,15 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="background">
+    <Calculator />
+  </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import HelloWorld from './components/HelloWorld.vue'
+import Calculator from '@/components/Calculator.vue'
 
 @Options({
   components: {
-    HelloWorld
+    Calculator
   }
 })
 export default class App extends Vue {}
@@ -22,6 +23,29 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+div.background {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  grid-template-rows: 1fr min-content 1fr;
+
+  grid-template-areas:
+    ". . ."
+    ". calculator ."
+    ". . .";
+
+  background-image: linear-gradient(115deg, #9156e2 0%, #ff9768 100%);
+
+  > div.calculator {
+    grid-area: calculator;
+  }
 }
 </style>
